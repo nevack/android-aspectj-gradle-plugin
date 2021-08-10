@@ -1,1 +1,1 @@
-include(":android-gradle-aspectj")
+rootProject.name = "android-aspectj-gradle-plugin"
