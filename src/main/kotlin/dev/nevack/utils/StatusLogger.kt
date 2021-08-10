@@ -61,21 +61,31 @@ internal fun logExtraAjcArgumentAlreadyExists(arg: String) {
     println("extra AjC argument $arg already exists in build config")
 }
 
-internal fun logBuildParametersAdapted(args: MutableCollection<String?>, logfile: String) {
-    fun extractParamsToString(it: String): String {
-        return when {
-            it.startsWith('-') -> "$it :: "
-            else -> when {
-                it.length > 200 -> "[ list files ],\n"
-                else -> "$it, "
+internal fun logBuildParametersAdapted(args: MutableCollection<String>, logfile: String) {
+    var dash = false
+    val params = buildString {
+        for (arg in args) when {
+            arg.startsWith('-') -> {
+                if (dash) appendLine()
+                append(arg)
+                dash = true
+            }
+            arg.contains(':') -> {
+                appendLine()
+                arg.split(':').forEach {
+                    append("    ")
+                    appendLine(it)
+                }
+                dash = false
+            }
+            else -> {
+                dash = false
+                append(' ')
+                appendLine(arg)
             }
         }
     }
 
-    val params = args
-            .filterNotNull()
-            .joinToString(transform = ::extractParamsToString)
-
-    println("Ajc config: $params")
+    println("Ajc config:\n$params")
     println("Detailed log in $logfile")
 }

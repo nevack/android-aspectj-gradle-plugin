@@ -49,6 +49,12 @@ dependencies {
     implementation("org.aspectj:aspectjtools:$aspectjVersion")
 }
 
+publishing {
+    repositories {
+        mavenLocal()
+    }
+}
+
 tasks.wrapper {
     version = "7.0.2"
     distributionType = Wrapper.DistributionType.ALL

@@ -8,8 +8,6 @@ import org.aspectj.tools.ajc.Main
 import org.gradle.api.GradleException
 import org.gradle.api.Project
 import java.io.File
-import java.util.*
-import java.util.concurrent.CyclicBarrier
 
 internal class AspectJWeaver(val project: Project) {
 
@@ -62,11 +60,11 @@ internal class AspectJWeaver(val project: Project) {
         //http://www.eclipse.org/aspectj/doc/released/devguide/ajc-ref.html
 
         val args = mutableListOf(
-            "-encoding", encoding,
-            "-source", sourceCompatibility,
-            "-target", targetCompatibility,
-            "-d", destinationDir,
-            "-bootclasspath", bootClasspath,
+            "-encoding", requireNotNull(encoding),
+            "-source", requireNotNull(sourceCompatibility),
+            "-target", requireNotNull(targetCompatibility),
+            "-d", requireNotNull(destinationDir),
+            "-bootclasspath", requireNotNull(bootClasspath),
             "-classpath", classPath.joinToString(separator = File.pathSeparator)
         )
 
@@ -121,7 +119,7 @@ internal class AspectJWeaver(val project: Project) {
         }
 
         log.writeText("Full ajc build args: ${args.joinToString()}\n\n")
-        logBuildParametersAdapted(args, log.name)
+        logBuildParametersAdapted(args, log.absolutePath)
 
         runBlocking {
             val handler = MessageHandler(true)
@@ -178,7 +176,6 @@ internal class AspectJWeaver(val project: Project) {
     }
 
     private companion object {
-
         fun runBlocking(action: () -> Unit) = synchronized(Companion::class, action)
     }
 }

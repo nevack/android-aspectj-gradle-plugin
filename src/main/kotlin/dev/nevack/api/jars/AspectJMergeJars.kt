@@ -5,6 +5,7 @@ import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.utils.FileUtils
 import dev.nevack.api.transform.AspectJTransform
+import dev.nevack.api.transform.TRANSFORM_NAME
 import java.io.File
 
 /**
@@ -15,7 +16,7 @@ import java.io.File
  */
 internal class AspectJMergeJars {
 
-    private val target = com.archinamon.api.transform.TRANSFORM_NAME
+    private val target = TRANSFORM_NAME
 
     internal fun doMerge(transform: AspectJTransform, context: TransformInvocation, resultDir: File) {
         if (resultDir.listFiles().isNotEmpty()) {
