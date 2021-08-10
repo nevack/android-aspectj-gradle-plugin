@@ -1,7 +1,7 @@
-package com.archinamon.utils
+package dev.nevack.utils
 
 import com.android.build.api.transform.JarInput
-import com.archinamon.api.transform.BuildPolicy
+import dev.nevack.api.transform.BuildPolicy
 import java.io.File
 
 internal fun logBypassTransformation() {

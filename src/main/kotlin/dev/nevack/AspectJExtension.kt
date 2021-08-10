@@ -1,4 +1,4 @@
-package com.archinamon
+package dev.nevack
 
 import org.gradle.api.JavaVersion
 

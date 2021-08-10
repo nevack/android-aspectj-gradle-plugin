@@ -1,4 +1,4 @@
-package com.archinamon.plugin
+package dev.nevack.plugin
 
 /**
  * TODO: Add description

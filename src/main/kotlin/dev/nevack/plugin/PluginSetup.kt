@@ -1,18 +1,16 @@
-package com.archinamon.plugin
+package dev.nevack.plugin
 
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
-import com.archinamon.AndroidConfig
-import com.archinamon.AspectJExtension
-import com.archinamon.MISDEFINITION
-import com.archinamon.RETROLAMBDA
-import com.archinamon.api.AspectJCompileTask
-import com.archinamon.api.BuildTimeListener
-import com.archinamon.utils.LANG_AJ
-import com.archinamon.utils.getJavaTask
-import com.archinamon.utils.getVariantDataList
+import dev.nevack.AndroidConfig
+import dev.nevack.AspectJExtension
+import dev.nevack.api.AspectJCompileTask
+import dev.nevack.api.BuildTimeListener
+import dev.nevack.plugin.ConfigScope
+import dev.nevack.utils.LANG_AJ
+import dev.nevack.utils.getJavaTask
+import dev.nevack.utils.getVariantDataList
 import com.google.wireless.android.sdk.stats.GradleBuildVariant
-import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.PluginContainer
@@ -34,8 +32,6 @@ internal fun configProject(project: Project, config: AndroidConfig, settings: As
             project.gradle.addListener(BuildTimeListener())
         }
     }
-
-    checkIfPluginAppliedAfterRetrolambda(project)
 }
 
 private fun prepareVariant(config: AndroidConfig) {
@@ -93,22 +89,6 @@ private fun configureCompiler(project: Project, config: AndroidConfig) {
             }
         } else {
             ajc.buildAndAttach(config)
-        }
-    }
-}
-
-private fun checkIfPluginAppliedAfterRetrolambda(project: Project) {
-    val appears = project.plugins.hasPlugin(RETROLAMBDA)
-    if (appears) {
-        project.logger.warn("Retrolambda is deprecated! Use desugar of Gradle 3.0.")
-    }
-
-    if (!appears) {
-        project.afterEvaluate {
-            //RL was defined before AJ plugin
-            if (!appears && project.plugins.hasPlugin(RETROLAMBDA)) {
-                throw GradleException(MISDEFINITION)
-            }
         }
     }
 }

@@ -1,7 +1,7 @@
-package com.archinamon.api
+package dev.nevack.api
 
-import com.archinamon.utils.logBuildParametersAdapted
-import com.archinamon.utils.logExtraAjcArgumentAlreadyExists
+import dev.nevack.utils.logBuildParametersAdapted
+import dev.nevack.utils.logExtraAjcArgumentAlreadyExists
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main

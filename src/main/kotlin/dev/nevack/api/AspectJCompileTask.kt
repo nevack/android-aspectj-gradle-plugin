@@ -1,9 +1,9 @@
-package com.archinamon.api
+package dev.nevack.api
 
-import com.archinamon.AndroidConfig
-import com.archinamon.AspectJExtension
-import com.archinamon.plugin.ConfigScope
-import com.archinamon.utils.*
+import dev.nevack.AndroidConfig
+import dev.nevack.AspectJExtension
+import dev.nevack.plugin.ConfigScope
+import dev.nevack.utils.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.file.FileCollection

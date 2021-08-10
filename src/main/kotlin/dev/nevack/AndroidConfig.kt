@@ -1,4 +1,4 @@
-package com.archinamon
+package dev.nevack
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.BaseExtension
@@ -8,14 +8,12 @@ import com.android.build.gradle.internal.plugins.AppPlugin
 import com.android.build.gradle.internal.plugins.BasePlugin
 import com.android.build.gradle.internal.plugins.LibraryPlugin
 import com.android.build.gradle.internal.plugins.TestPlugin
-import com.archinamon.plugin.ConfigScope
+import dev.nevack.plugin.ConfigScope
 import org.gradle.api.GradleException
 import org.gradle.api.Project
 import java.io.File
 
 private const val ASPECTJ_PLUGIN = "com.archinamon.aspectj"
-const val RETROLAMBDA = "me.tatarka.retrolambda"
-const val MISDEFINITION = "Illegal definition: $ASPECTJ_PLUGIN should be defined after $RETROLAMBDA plugin"
 
 private const val TAG = "AJC:"
 private const val PLUGIN_EXCEPTION = "$TAG You must apply the Android plugin or the Android library plugin"

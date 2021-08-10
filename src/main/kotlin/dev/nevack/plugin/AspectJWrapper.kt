@@ -1,12 +1,13 @@
-package com.archinamon.plugin
+package dev.nevack.plugin
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestedExtension
-import com.archinamon.AndroidConfig
-import com.archinamon.AspectJExtension
-import com.archinamon.api.transform.*
-import com.archinamon.utils.LANG_AJ
+import dev.nevack.AndroidConfig
+import dev.nevack.AspectJExtension
+import dev.nevack.api.transform.*
+import dev.nevack.utils.LANG_AJ
+import dev.nevack.plugin.configProject
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import javax.inject.Inject

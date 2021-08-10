@@ -1,4 +1,4 @@
-package com.archinamon.api.jars
+package dev.nevack.api.jars
 
 import com.android.SdkConstants
 import com.android.utils.PathUtils

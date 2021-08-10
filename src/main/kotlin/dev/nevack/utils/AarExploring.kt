@@ -1,4 +1,4 @@
-package com.archinamon.utils
+package dev.nevack.utils
 
 import java.io.File
 import javax.xml.bind.JAXBContext

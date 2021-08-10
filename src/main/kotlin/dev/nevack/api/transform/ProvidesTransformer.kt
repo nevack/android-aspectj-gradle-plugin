@@ -1,10 +1,10 @@
-package com.archinamon.api.transform
+package dev.nevack.api.transform
 
 import com.android.build.api.transform.Context
 import com.android.build.api.transform.TransformInput
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.api.transform.TransformOutputProvider
-import com.archinamon.utils.logBypassTransformation
+import dev.nevack.utils.logBypassTransformation
 import org.gradle.api.Project
 
 internal class ProvidesTransformer(project: Project): AspectJTransform(project, BuildPolicy.SIMPLE) {

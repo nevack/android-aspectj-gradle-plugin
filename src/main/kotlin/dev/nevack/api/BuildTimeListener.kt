@@ -1,4 +1,4 @@
-package com.archinamon.api
+package dev.nevack.api
 
 import org.gradle.BuildListener
 import org.gradle.BuildResult
@@ -13,7 +13,6 @@ class BuildTimeListener: TaskExecutionListener, BuildListener {
     private var startTime: Long = 0L
     private var times = mutableListOf<Pair<Long, String>>()
 
-    override fun buildStarted(gradle: Gradle) {}
     override fun settingsEvaluated(settings: Settings) {}
     override fun projectsLoaded(gradle: Gradle) {}
     override fun projectsEvaluated(gradle: Gradle) {}

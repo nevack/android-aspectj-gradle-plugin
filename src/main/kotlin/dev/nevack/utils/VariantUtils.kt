@@ -1,4 +1,4 @@
-package com.archinamon.utils
+package dev.nevack.utils
 
 import com.android.build.api.variant.impl.VariantImpl
 import com.android.build.gradle.internal.plugins.BasePlugin

@@ -13,29 +13,29 @@ version = extra["aspectjPluginVersion"] as String
 
 gradlePlugin {
     plugins {
-        register("com.archinamon.aspectj") {
-            id = "com.archinamon.aspectj"
-            implementationClass = "com.archinamon.plugin.AspectJWrapper\$Standard"
+        create("dev.nevack.aspectj") {
+            id = "dev.nevack.aspectj"
+            implementationClass = "dev.nevack.plugin.AspectJWrapper\$Standard"
         }
 
-        register("com.archinamon.aspectj-dryRun") {
-            id = "com.archinamon.aspectj-dryRun"
-            implementationClass = "com.archinamon.plugin.AspectJWrapper\$DryRun"
+        create("dev.nevack.aspectj-dryRun") {
+            id = "dev.nevack.aspectj-dryRun"
+            implementationClass = "dev.nevack.plugin.AspectJWrapper\$DryRun"
         }
 
-        register("com.archinamon.aspectj-ext") {
-            id = "com.archinamon.aspectj-ext"
-            implementationClass = "com.archinamon.plugin.AspectJWrapper\$Extended"
+        create("dev.nevack.aspectj-ext") {
+            id = "dev.nevack.aspectj-ext"
+            implementationClass = "dev.nevack.plugin.AspectJWrapper\$Extended"
         }
 
-        register("com.archinamon.aspectj-provides") {
-            id = "com.archinamon.aspectj-provides"
-            implementationClass = "com.archinamon.plugin.AspectJWrapper\$Provides"
+        create("dev.nevack.aspectj-provides") {
+            id = "dev.nevack.aspectj-provides"
+            implementationClass = "dev.nevack.plugin.AspectJWrapper\$Provides"
         }
 
-        register("com.archinamon.aspectj-junit") {
-            id = "com.archinamon.aspectj-junit"
-            implementationClass = "com.archinamon.plugin.AspectJWrapper\$Test"
+        create("dev.nevack.aspectj-junit") {
+            id = "dev.nevack.aspectj-junit"
+            implementationClass = "dev.nevack.plugin.AspectJWrapper\$Test"
         }
     }
 }
@@ -47,12 +47,6 @@ dependencies {
     implementation("com.android.tools.build:gradle:$androidGradleVersion")
     implementation("org.aspectj:aspectjrt:$aspectjVersion")
     implementation("org.aspectj:aspectjtools:$aspectjVersion")
-
-    testImplementation(gradleTestKit())
-    testImplementation("junit:junit:4.12")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.0-M3")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:4.12.0-M1")
-    testImplementation(kotlin("test-junit"))
 }
 
 tasks.wrapper {

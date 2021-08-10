@@ -1,4 +1,4 @@
-package com.archinamon.api
+package dev.nevack.api
 
 import org.gradle.api.internal.file.AbstractFileCollection
 import org.gradle.api.internal.tasks.TaskDependencyInternal

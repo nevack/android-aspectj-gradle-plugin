@@ -1,4 +1,4 @@
-package com.archinamon.utils
+package dev.nevack.utils
 
 import com.android.build.api.transform.JarInput
 import java.io.File
