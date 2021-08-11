@@ -7,7 +7,6 @@ import dev.nevack.AndroidConfig
 import dev.nevack.AspectJExtension
 import dev.nevack.api.transform.*
 import dev.nevack.utils.LANG_AJ
-import dev.nevack.plugin.configProject
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import javax.inject.Inject

@@ -5,8 +5,6 @@ import com.android.build.gradle.LibraryPlugin
 import dev.nevack.AndroidConfig
 import dev.nevack.AspectJExtension
 import dev.nevack.api.AspectJCompileTask
-import dev.nevack.api.BuildTimeListener
-import dev.nevack.plugin.ConfigScope
 import dev.nevack.utils.LANG_AJ
 import dev.nevack.utils.getJavaTask
 import dev.nevack.utils.getVariantDataList
@@ -26,10 +24,6 @@ internal fun configProject(project: Project, config: AndroidConfig, settings: As
 
         if (!settings.dryRun) {
             configureCompiler(project, config)
-        }
-
-        if (settings.buildTimeLog) {
-            project.gradle.addListener(BuildTimeListener())
         }
     }
 }

@@ -2,7 +2,6 @@ package dev.nevack.api.transform
 
 import com.android.build.api.transform.*
 import com.android.build.api.variant.impl.VariantImpl
-import com.android.build.gradle.internal.pipeline.TransformInvocationBuilder
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
 import dev.nevack.AndroidConfig
@@ -70,28 +69,27 @@ internal abstract class AspectJTransform(val project: Project, private val polic
     }
 
     override fun getOutputTypes(): Set<QualifiedContent.ContentType> {
-        return TransformManager.CONTENT_CLASS
+        return inputTypes
     }
 
     override fun getScopes(): MutableSet<in QualifiedContent.Scope> {
-        return if (modeComplex()) TransformManager.SCOPE_FULL_PROJECT else Sets.immutableEnumSet(QualifiedContent.Scope.PROJECT)
+        return if (modeComplex()) {
+            TransformManager.SCOPE_FULL_PROJECT
+        } else {
+            Sets.immutableEnumSet(QualifiedContent.Scope.PROJECT)
+        }
     }
 
     override fun getReferencedScopes(): MutableSet<in QualifiedContent.Scope> {
-        return if (modeComplex()) super.getReferencedScopes() else TransformManager.SCOPE_FULL_PROJECT
+        return if (modeComplex()) {
+            super.getReferencedScopes()
+        } else {
+            TransformManager.SCOPE_FULL_PROJECT
+        }
     }
 
     override fun isIncremental(): Boolean {
         return false
-    }
-
-    @Suppress("OverridingDeprecatedMember")
-    override fun transform(context: Context, inputs: Collection<TransformInput>, referencedInputs: Collection<TransformInput>, outputProvider: TransformOutputProvider, isIncremental: Boolean) {
-        transform(TransformInvocationBuilder(context)
-            .addInputs(inputs)
-            .addReferencedInputs(referencedInputs)
-            .addOutputProvider(outputProvider)
-            .setIncrementalMode(isIncremental).build())
     }
 
     override fun transform(transformInvocation: TransformInvocation) {
